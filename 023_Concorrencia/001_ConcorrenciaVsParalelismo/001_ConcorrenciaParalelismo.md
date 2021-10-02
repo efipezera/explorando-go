@@ -11,4 +11,4 @@ Concorrência viabiliza paralelismo.
 
 ### Paralelismo 
 - Executa código simultâneamente em processadores físicos diferentes.
-Paralelismo exige muito mais do SO e do hardware.
+- Paralelismo exige muito mais do SO e do hardware.
