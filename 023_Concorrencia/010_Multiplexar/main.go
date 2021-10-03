@@ -2,17 +2,17 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/efipezera/generator"
+	"modulo/gerador"
 )
 
 func encaminhar(origem <-chan string, destino chan string) {
 	for {
+		//Encaminhando os dados de origem para o destino.
 		destino <- <-origem
 	}
 }
 
-//multiplexar - misturar (mensagens) num canal
+//Juntar tem a tarefa de multiplexar - misturar mensagens em um só canal.
 func juntar(entrada1, entrada2 <-chan string) <-chan string {
 	canal := make(chan string)
 	go encaminhar(entrada1, canal)
@@ -22,8 +22,8 @@ func juntar(entrada1, entrada2 <-chan string) <-chan string {
 
 func main() {
 	canal := juntar(
-		generator.Titulo("https://pt.stackoverflow.com/", "https://github.com/"),
-		generator.Titulo("https://www.google.com.br/", "https://www.youtube.com/"),
+		gerador.Titulo("https://pt.stackoverflow.com/", "https://github.com/"),
+		gerador.Titulo("https://www.google.com.br/", "https://www.youtube.com/"),
 	)
 	fmt.Println(<-canal, "|", <-canal)
 	fmt.Println(<-canal, "|", <-canal)
